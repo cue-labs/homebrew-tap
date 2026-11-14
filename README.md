@@ -26,7 +26,7 @@ If you have `cue` from Homebrew's formula and install this cask, Homebrew
 leaves the formula's `cue` linked and tells you so. To switch:
 
 ```
-brew uninstall cue && brew install cue-labs/tap/cue
+brew uninstall --formula cue && brew reinstall cue-labs/tap/cue
 ```
 
 ## Requirements
