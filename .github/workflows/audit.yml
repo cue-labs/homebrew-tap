@@ -1,0 +1,33 @@
+# Checks every cask in the tap with Homebrew's own style and strict
+# audit on every push, so that a cask the release process writes is seen
+# to be sound within minutes, before a person installs it. Casks are
+# macOS-only, so this runs on a macOS runner. The cask cue deliberately
+# shares its name with homebrew/core's formula (the qualified name
+# resolves to the cask), so the strict audit's token-conflict check is
+# the one check skipped.
+name: Audit
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: macos-latest
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: "1"
+      HOMEBREW_NO_INSTALL_CLEANUP: "1"
+    steps:
+      - name: Tap this checkout
+        run: brew tap cue-labs/tap "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY"
+      - name: Use the pushed revision
+        run: |
+          cd "$(brew --repository cue-labs/tap)"
+          git fetch --depth=1 origin "$GITHUB_SHA"
+          git checkout --detach "$GITHUB_SHA"
+      - name: Trust the tap for this run
+        run: brew trust cue-labs/tap
+      - name: Style
+        run: brew style cue-labs/tap
+      - name: Audit
+        run: brew audit --tap cue-labs/tap --online --strict --except=token_conflicts
