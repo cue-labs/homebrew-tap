@@ -1,9 +1,9 @@
 cask "cue@rc" do
   arch arm: "arm64", intel: "amd64"
 
-  version "0.18.0-rc.2"
-  sha256 arm:   "ba3af8cd79bd0b9ec0890d6914668254939ef117a1a9fbc0fb1749d23455010e",
-         intel: "6e908054791da5aeb8e18307d1cf8e67b4fe7489f7eabd2bdc5e5af81dc14836"
+  version "0.18.0-rc.3"
+  sha256 arm:   "2bb8bcb6a8bb86bc9c0f5baae0f2f0ed963118fa90207d33fbe4baa69254eb2a",
+         intel: "cf247244f0d47652446a7c5d9b4ac4aae7c2f0f780da9377a3156272d94b7864"
 
   url "https://dl.cue.dev/v#{version}/cue_v#{version}_darwin_#{arch}.tar.gz"
   name "CUE Labs distribution of CUE, release candidate"
