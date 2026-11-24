@@ -5,7 +5,7 @@ of CUE on macOS: the `cue` binary that CUE Labs builds, signs and
 notarizes, downloaded from https://dl.cue.dev/ and checked against the
 release's published checksum.
 
-```
+```sh
 brew install cue-labs/tap/cue
 ```
 
@@ -25,7 +25,7 @@ installing CUE is set out on
 If you have `cue` from Homebrew's formula and install this cask, Homebrew
 leaves the formula's `cue` linked and tells you so. To switch:
 
-```
+```sh
 brew uninstall --formula cue && brew reinstall cue-labs/tap/cue
 ```
 
