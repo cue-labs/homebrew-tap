@@ -37,17 +37,35 @@ brew uninstall --formula cue && brew reinstall cue-labs/tap/cue
 - Linux is not served by this tap. Linux archives are on
   [the releases page](https://cue.dev/docs/releases/).
 
-## Pre-releases and older versions
+## Release candidates
 
-This cask offers stable releases only. Pre-releases, and patches to an
-older release line after a newer line exists, are available as archives
-from [the releases page](https://cue.dev/docs/releases/).
+```sh
+brew install cue-labs/tap/cue@rc
+```
+
+`cue@rc` installs the latest release candidate, to try a release
+before it is stable. It holds one version at a time: each new release
+candidate replaces the last, and `brew upgrade` follows. It does not
+move on to the stable release. To go back to that:
+
+```sh
+brew uninstall --cask cue@rc && brew install cue-labs/tap/cue
+```
+
+`cue@rc` and `cue` cannot be installed at the same time.
+
+## Older versions
+
+Earlier release candidates, and patches to an older release line after
+a newer line exists, are available as archives from
+[the releases page](https://cue.dev/docs/releases/).
 
 ## How it is updated
 
 `Casks/cue.rb` is written by the CUE Labs release process, once per
 stable release, from the release's published checksum file. Nobody edits
-its version or checksums by hand. The previous tap, `cue-lang/tap`, is
+its version or checksums by hand. `Casks/cue@rc.rb` is updated by a
+maintainer for each release candidate. The previous tap, `cue-lang/tap`, is
 retired and unrelated to this one.
 
 ## Trusting by hand
